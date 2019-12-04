@@ -1,0 +1,95 @@
+{extend name="public/base"/}
+  {block name="head"}
+      <div class="header"> 
+                        <h3 class="page-header">
+                            添加{$name}
+                        </h3>
+            <ol class="breadcrumb">
+            <li><a href="#">{$name}</a></li>
+            <li class="active">添加</li>
+          </ol> 
+            
+      </div>
+
+
+            <div class="form-group" style="margin-left:30px;">
+                <label for="dtp_input1" class="col-md-1 control-label ">开始时间</label>
+                <div id="startdiv" class="input-group date form_date col-md-3" data-date="2019-3-01" data-date-format="yyyy-mm-dd " data-link-field="dtp_input1" data-link-format="yyyy-mm-dd ">
+                    <input id="start" class="form-control" size="16" type="text" placeholder="请选择开始时间" value="" readonly>
+                  
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+           <div class="form-group" style="margin-left:30px;">
+                <label for="dtp_input2" class="col-md-1 control-label">结束时间</label>
+                <div id="endDiv" class="input-group date form_date col-md-3" data-date="2019-5-01" data-date-format="yyyy-mm-dd " data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input id="end" class="form-control" size="16" type="text" placeholder="请选择结束时间" value="" readonly>
+                   
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+                <input type="hidden" id="dtp_input2" value="" /><br/>
+            </div>
+          
+
+  {/block}
+{block name="content"}
+          {include file="public/add2" /}
+{/block}
+{block name="js"}
+<script type="text/javascript" src='__STATIC__/assets/dist/js/bootstrap-datepicker.min.js'></script>
+<script type="text/javascript" src='__STATIC__/assets/dist/js/bootstrap-datepicker.js'></script>
+<script type="text/javascript">
+
+$('.form_date').datepicker({
+      language:  'fr',
+      weekStart: 1,
+      todayBtn:  1,   //今日日期按钮
+      autoclose: 1,   //自动关闭
+      todayHighlight: 1,   //高亮今日日期
+      startView: 2,       //从日期视图开始
+      minView: 2,
+      forceParse: 0
+   
+    
+    }); 
+  var  endtime
+  var  start
+  $('#startdiv').unbind("change");
+  $('#startdiv').change(function(){
+    $('#endDiv').datepicker('setStartDate', $("#start").val());
+    start=$("#start").val();
+    
+  });
+  $('#endDiv').unbind("change");
+  $('#endDiv').change(function(){
+  $('#startdiv').datepicker('setEndDate', $("#end").val());
+  endtime=$("#end").val();
+  });
+  $('.addexam').click(function(){
+    var  title=$("input[name='name']").val();
+  var  finish_ship=$("input[name='name3']").val();
+  var id={$id}
+
+       $.ajax({
+          type: "POST",
+          url: "{:url('exam/insert_exam')}",
+          data: {id:id,title:title,finish_ship:finish_ship,end_time:endtime,begin_time:start},
+          success: function(msg){
+            
+           
+             if(msg==1){
+                alert('添加成功')
+                location.href="{:url('teacher/theme')}"
+             }
+              
+          }
+      });
+  })
+  
+
+
+
+</script>
+
+{/block}

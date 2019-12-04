@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>注册</title>  
+    <link rel="stylesheet" href="__CSS__/admin/pintuer.css">
+    
+    <script src="__JS__/admin/jquery.js"></script>
+    <script src="__JS__/admin/pintuer.js"></script>  
+</head>
+<body class="" >
+
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            
+            <div class="media media-y margin-big-bottom">           
+            </div>         
+            <form action="index.html" method="post" class=" bg-white">
+            <div class="panel loginbox">
+                <div class="text-center margin-big padding-big-top"><h1>注册</h1></div>
+                <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                        <span class="icon icon-user margin-small"></span>
+                            <input type="text" class="input input-big" name="name" placeholder="姓名" data-validate="required:请填写姓名" />
+                            
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                        <span class="icon icon-user margin-small"></span>
+                            <input type="text" class="input input-big" name="tel" placeholder="电话" data-validate="required:请填写电话" />
+                            
+                        </div>
+                    </div>
+                
+                <!-- 选择按钮 -->
+                    <tr>
+                    <td><select class="button button-block" onchange="selectApar()" id="selectSex">
+                            <option value="">选择分店</option>
+                            <option value="1">海医分店</option>
+                            <option value="2">凯博分店</option>
+                            <option value="3">兴丹分店</option>
+                    </select></td>
+                    <td><select class="button button-block" " id="aparSelect1">
+                            <option value="+data[i]+"></option>
+                          
+                    </select></td>
+                    </tr>
+              
+                    
+
+                  
+                </div>
+              
+
+                 <div style="padding:30px;"><input type="button" id="reg" class="button button-block bg-main text-big input-big" value="注册"></div>
+            </div>
+            </form>          
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+    $(function(){
+        $('#reg').on('click',function(event){
+            var name=$(':text').val();
+            var w_id=$('#aparSelect1 option:selected').val();//员工id
+            var tel=$('input[name="tel"]').val();
+        var msg={name:name,w_id:w_id,tel:tel};
+          
+        $.post("{:url('user/regin')}",msg,function(data){
+            //传给data.php并执行del_row后删除ui部分
+           var data=$.parseJSON(data);
+                alert(data.message);
+                if(data.status==1){
+                    window.location.href="{:url('index/login')}"  
+                }
+                      
+            });
+      
+        })
+
+
+    })
+
+            //二级联动
+            function selectApar() {
+                // 选中性别
+                var place = $("#selectSex").val();
+
+                $("#aparSelect").find("option:not(:first)").remove();
+                        $.ajax({
+                            url : "{:url('index/selectworker')}",
+                            data : {
+                                "p_id" : place
+                            },
+                            success : function(data) {
+                                var data= JSON.parse(data);
+                                $("#aparSelect1").children().remove();
+                                for (var key in data) {
+                                    var option="<option value="+key+">"+data[key]+"</option>";
+                                    $("#aparSelect1").append(option);
+                                }
+                               
+                            }
+                        })
+            }
+
+</script>
+</html>

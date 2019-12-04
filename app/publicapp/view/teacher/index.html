@@ -1,0 +1,93 @@
+ {extend name="public/base" /}
+  {block name="head"}
+		  <div class="header"> 
+                        <h3 class="page-header">
+                            信息
+                        </h3>
+						<ol class="breadcrumb">
+					  <li><a href="#">首页</a></li>
+					  <li class="active">信息</li>
+					</ol> 
+									
+		  </div>
+{/block}
+  {block name="content"}
+
+
+      <div class="dashboard-cards"> 
+         <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+           <a href="{:url('files/fileslist')}">
+            <div class="card horizontal cardIcon waves-effect waves-dark">
+            <div class="card-image blue">
+            <i class="material-icons dp48">import_export</i>
+            </div>
+            <div class="card-stacked blue">
+            <div class="card-content">
+            <h3>{$filesnum}</h3> 
+            </div>
+            <div class="card-action">
+            <strong>文章数</strong>
+            </div>
+            </div>
+            </div>
+        </a>
+           </div>
+             <div class="col-xs-12 col-sm-6 col-md-3">
+           <a href="{:url('video/videos')}">
+            <div class="card horizontal cardIcon waves-effect waves-dark">
+            <div class="card-image blue">
+            <i class="material-icons dp48">movie</i>
+            </div>
+            <div class="card-stacked blue">
+            <div class="card-content">
+            <h3>{$videonum}</h3> 
+            </div>
+            <div class="card-action">
+            <strong>视频数</strong>
+            </div>
+            </div>
+            </div> 
+        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+           <a href="{:url('topic/topiclist')}">
+            <div class="card horizontal cardIcon waves-effect waves-dark">
+            <div class="card-image blue">
+            <i class="material-icons dp48">message</i>
+            </div>
+            <div class="card-stacked blue">
+            <div class="card-content">
+            <h3>{$commentnum}</h3> 
+            </div>
+            <div class="card-action">
+            <strong>主题数</strong>
+            </div>
+            </div>
+            </div> 
+        </a>
+             
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+           <a href="{:url('user/userlist')}">
+          <div class="card horizontal cardIcon waves-effect waves-dark">
+            <div class="card-image blue">
+            <i class="material-icons dp48">supervisor_account</i>
+            </div>
+            <div class="card-stacked blue">
+            <div class="card-content">
+            <h3>{$usernum}</h3> 
+            </div>
+            <div class="card-action">
+            <strong>用户数</strong>
+            </div>
+            </div>
+            </div> 
+        </a>
+             
+                    </div>
+                </div>
+         </div>
+     
+          
+{/block}

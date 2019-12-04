@@ -1,0 +1,39 @@
+{include file="public/meta" /}
+
+{include file="public/header" /}
+
+{include file="public/liftnav" /}
+<div id="page-wrapper">
+         {block name="head"}
+		
+		  {/block}
+		 
+         <div id="page-inner">
+		   {block name="content"}
+		 
+		   {/block}
+		 <div>
+<!-- 		 
+		 <footer><p>All right reserved by: <a href="https://www.func.xin/">海南方克鑫网络科技有限公司</a></p>
+				
+        
+		 </footer> -->
+</div>
+
+  {block name="js"}
+    <script>
+        $('.a').click(function(){
+            var id=$(this).parent().parent().children().first().text();
+            var url="{:url('comment/commentlist',['id'=>'ID'])}";
+            url=url.replace("ID",id);
+            location.href=url;
+             
+        })
+
+    </script>        
+  {/block}
+
+</body>
+
+</html>	
+		 

@@ -1,0 +1,111 @@
+{extend name="public/index"/}
+{block name="content"}
+
+<section id='index'>
+<div id="myCarousel" class="carousel slide" data-interval="5000" data-ride="carousel" style="height:160px" >
+	<!-- 轮播（Carousel）指标 -->
+	<ol class="carousel-indicators">
+		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		<li data-target="#myCarousel" data-slide-to="1"></li>
+		<li data-target="#myCarousel" data-slide-to="2"></li>
+		<li data-target="#myCarousel" data-slide-to="3"></li>
+	</ol>   
+	<!-- 轮播（Carousel）项目 -->
+	<div class="carousel-inner">
+		<div class="item active">
+			<img :src="round1.src1">
+		</div>
+		<div class="item" v-for="value in round1">
+			<img :src="value">
+		</div>
+	</div>
+	<!-- 轮播（Carousel）导航 -->
+	<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		
+	</a>
+	<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		
+	</a>
+</div> 
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3" v-for="item in items4"  v-on:click="go(item)"><img :src="item.src" alt="" class="img-responsive"><p class="text-center">{{item.name}}</p></div>
+	</div>
+</div>
+
+<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel"  >
+
+	<!-- 轮播（Carousel）项目 -->
+	<div class="carousel-inner">
+		<div class="item active" >
+			<img :src="roundAd.src8">
+		</div>
+
+		<div class="item" v-for="value in roundAd">
+			<img :src="value">
+		</div>
+		
+	</div>
+
+</div> 
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3" v-for="item in items8" v-on:click="go(item)"><img :src="item.src" alt="" class="img-responsive"><p class="text-center">{{item.name}}</p></div>
+	</div>
+</div>
+</section>
+
+{/block}
+
+{block name="js"}
+<script type="text/javascript">
+new Vue({
+	el: '#index',
+  data: {
+        items4: [
+            { src: '__STATIC__/images/yd/yidong.png',name:"首页",url:'http://wap.hi.10086.cn/fjwd/index.html?Session_Shop={$Session_Shop}&ShopUserCodeSession={$ShopUserCodeSession}' },
+	        { src: '__STATIC__/images/yd/选靓号.png',name:"选靓号", url:"http://wap.hi.10086.cn/h5service/login/login.do"},
+	        { src: '__STATIC__/images/yd/宽带.png',name:"办宽带",url:"http://wap.hi.10086.cn/hnlottery/broadbandorder/broadbandorder.do?Session_Shop={$Session_Shop}&isWd=1&OfficeBossNoSession={$Session_Shop}&ShopUserCodeSession={$ShopUserCodeSession}" },
+	        { src: '__STATIC__/images/yd/huafei.png',name:"充话费",url:'https://touch.10086.cn/i/mobile/rechargecredit.html?Session_Shop={$Session_Shop}&isWd=1&OfficeBossNoSession={$Session_Shop}&ShopUserCodeSession={$ShopUserCodeSession}' },
+      
+        ],
+        items8: [
+	        { src: '__STATIC__/images/yd/yidong.png',name:"移动专区",url:"http://touch.10086.cn/list/101_898_898_1_0_0_0_0_0_0_0.html"},
+	        { src: '__STATIC__/images/yd/huawei.png',name:"华为专区",url:"https://msale.vmall.com/hwmate.html" },
+	        { src: '__STATIC__/images/yd/kdyuyue.png',name:"宽带预约",url:"http://wap.hi.10086.cn/h5service/login/login.do" },
+	        { src: '__STATIC__/images/yd/4G.png',name:"靓号免费送",url:"http://wap.hi.10086.cn/shop/login/login.html;shopCookie=dBYeQ9eELzy3jON2zNKSzZilYbDxtcAL9LyKm2NTxDfMmfq8lZLV!1555979186" },
+	        { src: '__STATIC__/images/yd/vivo.png',name:"vivo专区",url:"https://www.vivo.com.cn/"},
+	        { src: '__STATIC__/images/yd/pingg.png',name:"苹果手机",url:"https://www.apple.com/cn/ipad/"},
+	        { src: '__STATIC__/images/yd/oppo.png',name:"oppo手机",url:"http://www.oppo.com/cn/" },
+	        { src: '__STATIC__/images/yd/ml.png',name:"小米专区" ,url:"https://m.mi.com/?client_id=180100031058&masid=17484.0001&kwd=%E5%B0%8F%E7%B1%B3"},
+      
+        ],
+        round1:{
+        	src1:"__STATIC__/images/yd/b1.png",
+        	src2:"__STATIC__/images/yd/b2.png",
+        	src3:"__STATIC__/images/yd/b3.png",
+        	src4:"__STATIC__/images/yd/b4.png"
+        },
+        roundAd:{
+        	src1:"__STATIC__/images/yd/ml.png",
+        	src2:"__STATIC__/images/yd/yidong.png",
+        	src3:"__STATIC__/images/yd/huawei.png",
+        	src4:"__STATIC__/images/yd/kdyuyue.png",
+        	src5:"__STATIC__/images/yd/4G.png",
+        	src6:"__STATIC__/images/yd/pingg.png",
+        	src7:"__STATIC__/images/yd/vivo.png",
+        	src8:"__STATIC__/images/yd/oppo.png",
+        },
+  },
+  methods:{
+  	go(e){
+  		location.href=e.url;
+  	}
+  }
+})
+</script>
+{/block}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	{include file="public/meta" /}
+<body>
+     
+           
+          
+    <div id="wrapper">
+		{include file="public/header" /}
+	        <!-- /. NAV TOP  -->
+		{include file="public/liftnav" /}
+        <!-- /. NAV SIDE  -->
+
+        <div id="page-wrapper" >
+            <div id="page-inner">
+			    {block name="content"}
+                       body
+		        {/block} 
+			</div>
+             <!-- /. PAGE INNER  -->
+        </div>
+         <!-- /. PAGE WRAPPER  -->
+    </div>
+    <div class="footer">
+		{include file="public/footer" /}
+    </div>
+          
+
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="__JS__/jquery.min.js"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="__STATIC__/bootstrap/js/bootstrap.min.js"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="__JS__/sysadmin/custom.js"></script>
+    
+     {block name="js"}
+            <script type="text/javascript">
+
+            </script>  
+     {/block} 
+</body>
+</html>
+
+
+
+
+

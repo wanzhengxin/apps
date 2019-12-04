@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>登录</title>  
+    <link rel="stylesheet" href="__CSS__/admin/pintuer.css">
+    
+    <script src="__JS__/admin/jquery.js"></script>
+    <script src="__JS__/admin/pintuer.js"></script>  
+</head>
+<body class="" >
+
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            
+            <div class="media media-y margin-big-bottom">           
+            </div>         
+            <form action="index.html" method="post" class=" bg-white">
+            <div class="panel loginbox">
+                <div class="text-center margin-big padding-big-top"><h1>实验室管理系统</h1></div>
+                <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="text" class="input input-big" name="name" placeholder="登录姓名" data-validate="required:请填写姓名" />
+                            <span class="icon icon-user margin-small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="password" class="input input-big" name="password" placeholder="登录密码(默认123456)" />
+                            <span class="icon icon-key margin-small"></span>
+                        </div>
+                    </div>
+                  
+                </div>
+                <div style="padding:30px;"><input type="button" id="login" class="button button-block bg-main text-big input-big" value="登录"></div>
+                 <div style="padding:80px;">欢迎来到实验室管理系统。&copy  2019  <a  style='color: #432768;' href="https://www.func.xin/" target="_blank" title="方克鑫科技">海南方克鑫网络科技</a></div>
+            </div>
+            </form>          
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+    $(function(){
+        $('#login').on('click',function(event){
+            $name=$(':text').val();
+            $password=$(':password').val();
+          
+        $.post("{:url('user/login')}",{tel:$name,password:$password},function(data){
+            //传给data.php并执行del_row后删除ui部分
+           var data=$.parseJSON(data);
+                if(data==1){
+                    window.location.href="{:url('index/index')}"  
+                }else{
+                    alert('登陆失败');
+                }
+                      
+            });
+      
+        })
+
+        $('#reg').on('click',function(){
+            location.href="{:url('index/reg')}" 
+        })
+    })
+
+</script>
+</html>

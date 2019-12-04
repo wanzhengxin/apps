@@ -1,0 +1,16 @@
+{extend name="public/base"/}
+  {block name="head"}
+		  <div class="header"> 
+                        <h3 class="page-header">
+                            添加{$name}
+                        </h3>
+						<ol class="breadcrumb">
+					  <li><a href="#">{$name}</a></li>
+					  <li class="active">添加</li>
+					</ol> 
+									
+		  </div>
+  {/block}
+{block name="content"}
+          {include file="public/add" /}
+{/block}
